@@ -105,7 +105,7 @@ public class VolmitCommand extends ListenerAdapter {
         if (noPermission(Objects.requireNonNull(e.getMember()).getRoles(), e.getAuthor().getId())) return;
 
         // Convert args
-        List<String> args = new LinkedList<>(Arrays.asList(e.getMessage().getContentRaw().replace(Toolkit.BotPrefix, "").split(" ")));
+        List<String> args = new LinkedList<>(Arrays.asList(e.getMessage().getContentRaw().replace(Toolkit.get().BotPrefix, "").split(" ")));
 
         // Check match command
         if (!checkCommand(args.get(0))) return;
@@ -193,13 +193,13 @@ public class VolmitCommand extends ListenerAdapter {
     public void sendHelp(Message message) {
         VolmitEmbed embed = new VolmitEmbed(getName() + " Command Usage", message);
 
-        String cmd = Toolkit.BotPrefix + getName().substring(0, 1).toUpperCase() + getName().substring(1);
+        String cmd = Toolkit.get().BotPrefix + getName().substring(0, 1).toUpperCase() + getName().substring(1);
         if (getCommands().size() < 2) {
             embed.addField(cmd, "`*no aliases*`\n" + getDescription(), true);
         } else {
             embed.addField(
                     cmd,
-                    "\n`" + Toolkit.BotPrefix +
+                    "\n`" + Toolkit.get().BotPrefix +
                             (getCommands().size() == 2 ?
                             getCommands().get(1) :
                             " " + getCommands().subList(1, getCommands().size()).toString()
@@ -209,7 +209,7 @@ public class VolmitCommand extends ListenerAdapter {
             );
         }
         if (getExample() != null) {
-            embed.addField("**Usage**", "`" + Toolkit.BotPrefix + getExample() + "`", false);
+            embed.addField("**Usage**", "`" + Toolkit.get().BotPrefix + getExample() + "`", false);
         }
         if (getRoles() != null && getRoles().size() != 0) {
             embed.addField("**Permitted for role(s)**", "`" + getRoles().toString() + "`", false);
@@ -222,19 +222,19 @@ public class VolmitCommand extends ListenerAdapter {
         VolmitEmbed embed = new VolmitEmbed(getName() + " Command Usage", message);
 
         getSubcommands().forEach(command -> {
-            String cmd = Toolkit.BotPrefix + command.getName().substring(0, 1).toUpperCase() + command.getName().substring(1);
+            String cmd = Toolkit.get().BotPrefix + command.getName().substring(0, 1).toUpperCase() + command.getName().substring(1);
             if (command.getCommands().size() < 2) {
                 embed.addField(cmd, "`*no aliases*`\n" + command.getDescription(), true);
             } else {
                 String body =
-                        "\n`" + Toolkit.BotPrefix +
+                        "\n`" + Toolkit.get().BotPrefix +
                         (command.getCommands().size() == 2 ?
                                 command.getCommands().get(1) :
                                 " " + command.getCommands().subList(1, command.getCommands().size()))
                                 .replace("[", "").replace("]", "") +
                         "`\n" +
                         command.getDescription() +
-                        (command.getExample() != null ? "\n**Usage**\n`" + Toolkit.BotPrefix + command.getExample() + "`": "");
+                        (command.getExample() != null ? "\n**Usage**\n`" + Toolkit.get().BotPrefix + command.getExample() + "`": "");
                 embed.addField(
                         cmd,
                         body,

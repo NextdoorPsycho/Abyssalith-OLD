@@ -11,6 +11,7 @@ import lombok.NonNull;
 import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
+import volmbot.Main;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,19 +20,19 @@ import java.util.List;
 
 public class Toolkit extends ListenerAdapter {
     // Set from config
-    public static String ModRole = "Support";
-    public static String AdminRole = "Admin";
-    public static String Company = "Volmit Software";
-    public static String BotGIF = "https://media.giphy.com/media/mJAUdQb73H8zdPhCeI/giphy.gif";
-    public static String BotColor = "0xFFFF00";
-    public static String BotToken = "ODc1OTczMTYxODkwNTA4ODMw.YRdTlA.CbQTuIkYBIPjKv6vZQXWJPrcb7g";
-    public static String BotOwnerID = "";//Leave blank change in config
-    public static String BotPrefix = ".";
-    public static List<String> owo = Arrays.asList("OwO", "owo", "uwu", "ÒwÓ", "□w□", "●w●", "Owo", "owO", "♡w♡", "**OWO GET INTO MY PANTS NOW,  AND NUZZLE ME**");
+    public  String ModRole = "";//Leave blank change in config
+    public  String AdminRole = "";//Leave blank change in config
+    public  String Company = "";//Leave blank change in config
+    public  String BotGIF = "https://media.giphy.com/media/mJAUdQb73H8zdPhCeI/giphy.gif";
+    public  String BotColor = "";//Leave blank change in config
+    public  String BotToken = "";//Leave blank change in config
+    public  String BotOwnerID = "";//Leave blank change in config
+    public  String BotPrefix = "";//Leave blank change in config
+    public  List<String> owo = Arrays.asList("OwO", "owo", "uwu", "ÒwÓ","Owo", "owO");
     // Set from main class
-    public static Long botID;
-    public static User botUser;
-    public static String botName;
+    public  Long botID;
+    public  User botUser;
+    public  String botName;
 
     // Used for hot-loading and config
     private static final FileWatcher fw = new FileWatcher(getFile());
@@ -49,11 +50,13 @@ public class Toolkit extends ListenerAdapter {
 
             instance = new AtomicCache<>();
             L.v("Hot-loaded Config");
+            Main.getJDA();
         }
     }
     public static Toolkit get() {
         return instance.aquire(() -> {
             File f = getFile();
+            System.out.println(f.getAbsolutePath());
             f.getParentFile().mkdirs();
             Toolkit dummy = new Toolkit();
 
@@ -61,7 +64,9 @@ public class Toolkit extends ListenerAdapter {
                 dummy.save();
             }
             try {
-                return new Gson().fromJson(IO.readAll(f), Toolkit.class);
+                Toolkit tk = new Gson().fromJson(IO.readAll(f), Toolkit.class);
+                System.out.println(tk.BotToken);
+                return tk;
             } catch (IOException e) {
                 e.printStackTrace();
             }

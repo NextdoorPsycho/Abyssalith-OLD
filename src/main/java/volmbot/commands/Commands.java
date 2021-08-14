@@ -32,25 +32,25 @@ public class Commands extends VolmitCommand {
     public void handle(List<String> args, GuildMessageReceivedEvent e) {
 
         // Init embed
-        VolmitEmbed embed = new VolmitEmbed("**" + Toolkit.botName + " Info Page!**", e.getMessage());
+        VolmitEmbed embed = new VolmitEmbed("¯\\_(ツ)_/¯ **" + Toolkit.get().botName + " Info Page!**", e.getMessage());
 
         // Add explanation
         embed.addField(
                 "All commands you can use",
-                "!<command> followed by a list of aliases",
+                Toolkit.get().BotPrefix + "<command> followed by a list of aliases",
                 false
         );
 
         // Loop over and add all commands with their respective information
         for (VolmitCommand command : botCommands) {
-            String cmd = Toolkit.BotPrefix + command.getName().substring(0, 1).toUpperCase() + command.getName().substring(1);
+            String cmd = Toolkit.get().BotPrefix + command.getName().substring(0, 1).toUpperCase() + command.getName().substring(1);
             if (command.getCommands().size() < 2) {
                 embed.addField(cmd, "`*no aliases*`\n" + command.getDescription(), true);
             } else {
                 StringBuilder body = new StringBuilder();
                 body
                         .append("\n`")
-                        .append(Toolkit.BotPrefix)
+                        .append(Toolkit.get().BotPrefix)
                         .append(
                                 command.getCommands().size() == 2 ?
                                         command.getCommands().get(1) :

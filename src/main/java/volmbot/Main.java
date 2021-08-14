@@ -28,54 +28,43 @@ import java.util.Objects;
 
 public class Main extends ListenerAdapter {
 
+
     public static final Logger LOGGER = LoggerFactory.getLogger(WebSocket.Listener.class);
-    @Getter
-    private static JDA jda;
+
+
+    public static final IBotProvider provider = new BotProvider();
+
 
     // BOT BUILDER BOYS
+    public static JDA getJDA(){
+        return provider.get().getJDA();
+ }
     public static void main(String[] args) throws LoginException {
-
+        org.slf4j.simple.SimpleServiceProvider.class.getSimpleName();
         // Status
-        LOGGER.info("Loading main class...");
-
-        // Load toolkit definitions
-        Toolkit.get();
+        LOGGER.info("Initializing");
 
 
-        // Build JDA
-        jda = JDABuilder.createDefault(Toolkit.BotToken).build();
-        jda.getPresence().setStatus(OnlineStatus.ONLINE);
-        jda.getPresence().setActivity(Activity.watching("over Volmit: `!help`"));
-        //jda.getSelfUser().getManager().setName(Toolkit.BotName);
-        try {
-            // TODO: Fix this
-            jda.getSelfUser().getManager().setAvatar(Icon.from(new URL(Toolkit.BotGIF).openStream()));
-        } catch (Exception e) {
-            e.printStackTrace();
-            Main.error("Issue when getting avatar icon");
-        }
-
-        // Save user and name
-        Toolkit.botID = jda.getSelfUser().getIdLong();
-        Toolkit.botUser = jda.getUserById(Toolkit.botID);
-        Toolkit.botName = Objects.requireNonNull(Toolkit.botUser).getName();
+        Toolkit.get().botID = getJDA().getSelfUser().getIdLong();
+        Toolkit.get().botUser = getJDA().getUserById(Toolkit.get().botID);
+        Toolkit.get().botName = Objects.requireNonNull(Toolkit.get().botUser).getName();
 
         /// Listener Registrar
         // Log incoming messages
-        jda.addEventListener(new Main());
+        getJDA().addEventListener(new Main());
 
         // Listeners
-        jda.addEventListener(new Toolkit());
-        jda.addEventListener(new OwOListener());
-        jda.addEventListener(new AutoWiki());
-        jda.addEventListener(new Prefix());
+        getJDA().addEventListener(new Toolkit());
+        getJDA().addEventListener(new OwOListener());
+        getJDA().addEventListener(new AutoWiki());
+        getJDA().addEventListener(new Prefix());
 
         // Commands
-        jda.addEventListener(new Links());
-        jda.addEventListener(new Poll());
-        jda.addEventListener(new Log());
-        jda.addEventListener(new Shutdown());
-        jda.addEventListener(new Commands(jda)); // This one MUST be last
+        getJDA().addEventListener(new Links());
+        getJDA().addEventListener(new Poll());
+        getJDA().addEventListener(new Log());
+        getJDA().addEventListener(new Shutdown());
+        getJDA().addEventListener(new Commands(getJDA())); // This one MUST be last
 
         new Looper() {
             @Override
@@ -107,12 +96,12 @@ public class Main extends ListenerAdapter {
     }
     @Override
     public void onReady(@NonNull ReadyEvent e) {
-        LOGGER.info("{} IS FUCKING READY", e.getJDA().getSelfUser().getAsTag());
+        LOGGER.info("{} IS WATCHING THE UNIVERSE", e.getJDA().getSelfUser().getAsTag());
     }
 
     public static void shutdown(){
-        jda.getPresence().setStatus(OnlineStatus.OFFLINE);
-        jda.shutdown();
+        getJDA().getPresence().setStatus(OnlineStatus.OFFLINE);
+        getJDA().shutdown();
         System.exit(1);
     }
 

@@ -19,7 +19,7 @@ public class Poll extends VolmitCommand {
         super(
                 "Poll",
                 new String[]{},
-                new String[]{Toolkit.ModRole}, // Add role name here. Empty: always / 1+: at least one.
+                new String[]{Toolkit.get().ModRole}, // Add role name here. Empty: always / 1+: at least one.
                 "Poll creator. (max 20 options)",
                 true,
                 "poll <intro with spaces>~ option one, option two, c, d, e"
@@ -31,7 +31,7 @@ public class Poll extends VolmitCommand {
     public void handle(List<String> args, GuildMessageReceivedEvent e) {
         e.getChannel().sendMessage("Creating Poll...").queue();
         VolmitEmbed embed = new VolmitEmbed("Volmit Poll!", e.getMessage());
-        embed.setFooter("Please React to this poll with the emojis.", Toolkit.BotGIF);
+        embed.setFooter("Please React to this poll with the emojis.", Toolkit.get().BotGIF);
 
         StringBuilder body = new StringBuilder();
 
