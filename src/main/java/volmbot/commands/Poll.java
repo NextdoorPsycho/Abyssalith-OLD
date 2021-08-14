@@ -37,7 +37,7 @@ public class Poll extends VolmitCommand {
 
         boolean intro = true;
         int introIndex = -1;
-        for(int i = 1; i < args.size(); i++) {
+        for (int i = 1; i < args.size(); i++) {
             if (intro) {
                 if (args.get(i).trim().contains("~:")) {
                     intro = false;

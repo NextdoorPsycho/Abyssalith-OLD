@@ -1,13 +1,9 @@
 package volmbot;
 
 import art.arcane.quill.execution.Looper;
-import lombok.Getter;
 import lombok.NonNull;
 import net.dv8tion.jda.api.JDA;
-import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.OnlineStatus;
-import net.dv8tion.jda.api.entities.Activity;
-import net.dv8tion.jda.api.entities.Icon;
 import net.dv8tion.jda.api.events.ReadyEvent;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
@@ -21,7 +17,6 @@ import volmbot.listeners.Prefix;
 import volmbot.toolbox.Toolkit;
 
 import javax.security.auth.login.LoginException;
-import java.net.URL;
 import java.net.http.WebSocket;
 import java.util.Objects;
 
@@ -36,9 +31,10 @@ public class Main extends ListenerAdapter {
 
 
     // BOT BUILDER BOYS
-    public static JDA getJDA(){
+    public static JDA getJDA() {
         return provider.get().getJDA();
- }
+    }
+
     public static void main(String[] args) throws LoginException {
         org.slf4j.simple.SimpleServiceProvider.class.getSimpleName();
         // Status
@@ -76,48 +72,48 @@ public class Main extends ListenerAdapter {
     }
 
 
-
     @Override
     public void onMessageReceived(MessageReceivedEvent e) {
         if (!e.getAuthor().isBot()) {
             // Updates configurations
             Toolkit.get();
             Main.LOGGER.info(e.getAuthor().getName() + ": " + e.getMessage().getContentDisplay());
-            if (Shutdown.checkOverrideAdmin){
+            if (Shutdown.checkOverrideAdmin) {
                 if (e.getMessage().getContentRaw().contains("yes I am")) {
                     e.getMessage().delete().queue();
                     shutdown();
                 }
-                if (!e.getMessage().getContentDisplay().contains("shutdown") && !e.getMessage().getContentDisplay().contains("stop")){
+                if (!e.getMessage().getContentDisplay().contains("shutdown") && !e.getMessage().getContentDisplay().contains("stop")) {
                     Shutdown.checkOverrideAdmin = false;
                 }
             }
         }
     }
+
     @Override
     public void onReady(@NonNull ReadyEvent e) {
         LOGGER.info("{} IS WATCHING THE UNIVERSE", e.getJDA().getSelfUser().getAsTag());
     }
 
-    public static void shutdown(){
+    public static void shutdown() {
         getJDA().getPresence().setStatus(OnlineStatus.OFFLINE);
         getJDA().shutdown();
         System.exit(1);
     }
 
-    public static void warn(String message){
+    public static void warn(String message) {
         LOGGER.warn(" \\/ {}", message);
     }
 
-    public static void info(String message){
+    public static void info(String message) {
         LOGGER.info(" \\/ {}", message);
     }
 
-    public static void error(String message){
+    public static void error(String message) {
         LOGGER.error(" \\/ {}", message);
     }
 
-    public static void debug(String message){
+    public static void debug(String message) {
         LOGGER.debug(" \\/ {}", message);
     }
 }

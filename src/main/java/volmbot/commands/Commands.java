@@ -60,8 +60,8 @@ public class Commands extends VolmitCommand {
                         .append("`\n")
                         .append(command.getDescription())
                         .append(command.getExample() != null ? "\n**Usage**\n" + command.getExample() : "");
-                if (command.getRoles() != null && command.getRoles().size() != 0){
-                    if (command.getRoles().size() == 1){
+                if (command.getRoles() != null && command.getRoles().size() != 0) {
+                    if (command.getRoles().size() == 1) {
                         body.append("\n__Required:__ ").append(command.getRoles().get(0));
                     } else {
                         body.append("\n__Required:__ ").append(command.getRoles().toString()

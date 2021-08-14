@@ -13,6 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 public class VolmitEmbed extends EmbedBuilder {
     private final Message message;
+
     /*
         Creates a new default VolmitEmbed object.
         String `title` - the title of the embed
@@ -25,6 +26,7 @@ public class VolmitEmbed extends EmbedBuilder {
                 .setColor(Color.decode(Toolkit.get().BotColor))
                 .setFooter(Toolkit.get().Company, Toolkit.get().BotGIF);
     }
+
     /*
         Creates a new default VolmitEmbed object.
         String `title` - the title of the embed
@@ -37,6 +39,7 @@ public class VolmitEmbed extends EmbedBuilder {
                 .setColor(Color.decode(Toolkit.get().BotColor))
                 .setFooter(Toolkit.get().Company, Toolkit.get().BotGIF);
     }
+
     /*
         Creates a new default VolmitEmbed object.
         String `title` - the title of the embed
@@ -47,18 +50,20 @@ public class VolmitEmbed extends EmbedBuilder {
                 .setColor(Color.decode(Toolkit.get().BotColor))
                 .setFooter(Toolkit.get().Company, Toolkit.get().BotGIF);
     }
+
     /*
         Creates a new shortened VolmitEmbed object.
         String `title` - the title of the embed
         boolean `useShort` - toggles footer
      */
-    public VolmitEmbed(String title, boolean useShort){
+    public VolmitEmbed(String title, boolean useShort) {
         this.message = null;
         this.setTitle(title).setColor(Color.decode(Toolkit.get().BotColor));
-        if (!useShort){
+        if (!useShort) {
             this.setFooter(Toolkit.get().Company, Toolkit.get().BotGIF);
         }
     }
+
     /*
         Creates a new default VolmitEmbed object.
         This has no title (unless set later)
@@ -70,11 +75,12 @@ public class VolmitEmbed extends EmbedBuilder {
     }
 
     // Send embed in the channel of the message already saved. Does not send if no message was specified.
-    public void send(){
+    public void send() {
         this.send(this.message, null, false, 0);
     }
+
     // Send embed in the channel of the message already saved. Does not send if no message was specified. Adds reactions
-    public void send(List<String> reactions){
+    public void send(List<String> reactions) {
         this.send(this.message, null, false, 0, reactions);
     }
 
@@ -82,6 +88,7 @@ public class VolmitEmbed extends EmbedBuilder {
     public void send(TextChannel channel) {
         this.send(null, channel, false, 0);
     }
+
     // Send embed in `channel` with reactions `reactions`
     public void send(TextChannel channel, List<String> reactions) {
         this.send(null, channel, false, 0, reactions);
@@ -91,6 +98,7 @@ public class VolmitEmbed extends EmbedBuilder {
     public void send(Message message) {
         this.send(message, false);
     }
+
     // Send embed in channel of `message` with reactions `reactions`
     public void send(Message message, List<String> reactions) {
         this.send(message, false, reactions);
@@ -101,6 +109,7 @@ public class VolmitEmbed extends EmbedBuilder {
     public void send(Message message, boolean deleteMSG) {
         this.send(message, deleteMSG, 0);
     }
+
     // Send embed in channel of `message` and delete original if `deletesMSG` with reactions `reactions`
     public void send(Message message, boolean deleteMSG, List<String> reactions) {
         this.send(message, deleteMSG, 0, reactions);
@@ -111,6 +120,7 @@ public class VolmitEmbed extends EmbedBuilder {
     public void send(Message message, boolean deleteMSG, int deleteAfterMS) {
         this.send(message, null, deleteMSG, deleteAfterMS);
     }
+
     // Send embed in channel of `message` and delete original if `deleteMSG` after `deleteAfterMS` with reactions `reactions`
     public void send(Message message, boolean deleteMSG, int deleteAfterMS, List<String> reactions) {
         this.send(message, null, deleteMSG, deleteAfterMS, reactions);
@@ -121,6 +131,7 @@ public class VolmitEmbed extends EmbedBuilder {
     public void send(Message message, TextChannel channel, boolean deleteMSG, int deleteAfterMS) {
         send(message, channel, deleteMSG, deleteAfterMS, null);
     }
+
     // Send embed in channel of `message` (if null, send in `channel` instead), delete if `deleteMSG` after `deleteAfterMS`, with reactions `reactions`
     public void send(Message message, TextChannel channel, boolean deleteMSG, int deleteAfterMS, List<String> reactions) {
         if (reactions == null) reactions = new ArrayList<>();
@@ -128,7 +139,7 @@ public class VolmitEmbed extends EmbedBuilder {
             Main.error("No channel and message specified.");
         } else if (message != null) {
             List<String> finalReactions = reactions;
-            message.getChannel().sendMessage(this.build()).queue(msg ->{
+            message.getChannel().sendMessage(this.build()).queue(msg -> {
                 for (String emoji : finalReactions) {
                     msg.addReaction(emoji).queue();
                 }
@@ -138,7 +149,7 @@ public class VolmitEmbed extends EmbedBuilder {
             }
         } else {
             List<String> finalReactions = reactions;
-            channel.sendMessage(this.build()).queue(msg ->{
+            channel.sendMessage(this.build()).queue(msg -> {
                 for (String emoji : finalReactions) {
                     msg.addReaction(emoji).queue();
                 }

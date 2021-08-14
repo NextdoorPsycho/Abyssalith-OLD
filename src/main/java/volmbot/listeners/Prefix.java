@@ -12,9 +12,9 @@ public class Prefix extends ListenerAdapter {
             String Sender = e.getMessage().getAuthor().getName();
             VolmitEmbed embed = new VolmitEmbed("ಥ_ಥ", e.getMessage());
             embed
-                    .setAuthor("Hello "+ Sender)
+                    .setAuthor("Hello " + Sender)
                     .setDescription("Everytime you @ me, it hurts... Use my prefix please.")
-                    .addField("Here is my prefix", "`" + Toolkit.get().BotPrefix + "`" , false);
+                    .addField("Here is my prefix", "`" + Toolkit.get().BotPrefix + "`", false);
 
             embed.send(e.getMessage(), true, 1000);
         }

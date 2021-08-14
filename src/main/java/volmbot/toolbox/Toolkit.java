@@ -7,7 +7,6 @@ import art.arcane.quill.io.IO;
 import art.arcane.quill.json.JSONObject;
 import art.arcane.quill.logging.L;
 import com.google.gson.Gson;
-import lombok.NonNull;
 import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
@@ -20,23 +19,23 @@ import java.util.List;
 
 public class Toolkit extends ListenerAdapter {
     // Set from config
-    public  String ModRole = "";//Leave blank change in config
-    public  String AdminRole = "";//Leave blank change in config
-    public  String Company = "";//Leave blank change in config
-    public  String BotGIF = "https://media.giphy.com/media/mJAUdQb73H8zdPhCeI/giphy.gif";
-    public  String BotColor = "";//Leave blank change in config
-    public  String BotToken = "";//Leave blank change in config
-    public  String BotOwnerID = "";//Leave blank change in config
-    public  String BotPrefix = "";//Leave blank change in config
-    public  List<String> owo = Arrays.asList("OwO", "owo", "uwu", "ÒwÓ","Owo", "owO");
+    public String ModRole = "";//Leave blank change in config
+    public String AdminRole = "";//Leave blank change in config
+    public String Company = "";//Leave blank change in config
+    public String BotGIF = "https://media.giphy.com/media/mJAUdQb73H8zdPhCeI/giphy.gif";
+    public String BotColor = "";//Leave blank change in config
+    public String BotToken = "";//Leave blank change in config
+    public String BotOwnerID = "";//Leave blank change in config
+    public String BotPrefix = "";//Leave blank change in config
+    public List<String> owo = Arrays.asList("OwO", "owo", "uwu", "ÒwÓ", "Owo", "owO");
     // Set from main class
-    public  Long botID;
-    public  User botUser;
-    public  String botName;
+    public Long botID;
+    public User botUser;
+    public String botName;
 
     // Used for hot-loading and config
     private static final FileWatcher fw = new FileWatcher(getFile());
-    private static  AtomicCache<Toolkit> instance = new AtomicCache<>();
+    private static AtomicCache<Toolkit> instance = new AtomicCache<>();
 
     public void save() {
         File file = getFile();
@@ -45,7 +44,7 @@ public class Toolkit extends ListenerAdapter {
         J.attempt(() -> IO.writeAll(file, new JSONObject(new Gson().toJson(this)).toString(4)));
     }
 
-    public static void tick(){
+    public static void tick() {
         if (fw.checkModified()) {
 
             instance = new AtomicCache<>();
@@ -53,6 +52,7 @@ public class Toolkit extends ListenerAdapter {
             Main.getJDA();
         }
     }
+
     public static Toolkit get() {
         return instance.aquire(() -> {
             File f = getFile();
@@ -78,7 +78,7 @@ public class Toolkit extends ListenerAdapter {
         return new File("config/toolkit.json");
     }
 
-    public void onGuildMessageReceived(GuildMessageReceivedEvent e){
+    public void onGuildMessageReceived(GuildMessageReceivedEvent e) {
         if (!e.getMessage().getAuthor().isBot()) {
             get();
         }

@@ -5,11 +5,11 @@ import volmbot.Main;
 import volmbot.toolbox.Toolkit;
 import volmbot.util.VolmitCommand;
 
-
 import java.util.List;
 
 public class Shutdown extends VolmitCommand {
     public static boolean checkOverrideAdmin = false;
+
     // Constructor
     public Shutdown() {
         super(
@@ -26,11 +26,11 @@ public class Shutdown extends VolmitCommand {
     @Override
     public void handle(List<String> args, GuildMessageReceivedEvent e) {
         String oidcheck = e.getMessage().getAuthor().getId();
-        if(oidcheck.equals(Toolkit.get().BotOwnerID)) {
+        if (oidcheck.equals(Toolkit.get().BotOwnerID)) {
             Main.warn("KILLING BOT");
             e.getMessage().delete().queue();
             Main.shutdown();
-        } else{
+        } else {
             e.getChannel().sendMessage("uR noT my DAddY!").queue();
             checkOverrideAdmin = true;
         }

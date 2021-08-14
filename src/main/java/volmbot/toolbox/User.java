@@ -1,7 +1,6 @@
 package volmbot.toolbox;
 
 import art.arcane.quill.collections.KMap;
-//import art.arcane.quill.collections.hunk.Hunk;
 import art.arcane.quill.execution.J;
 import art.arcane.quill.io.IO;
 import com.google.gson.Gson;
@@ -13,7 +12,6 @@ import java.io.IOException;
 @Data
 public class User {
     private static final KMap<Long, User> kash = new KMap<>();
-
 
 
     // Add dans shitty variables here, all will be added to json perfectly // accessed
@@ -48,7 +46,7 @@ public class User {
         f.getParentFile().mkdirs();
 
         //Try-catch, but better ;)
-        J.attempt(()->IO.writeAll(f, new Gson().toJson(this)));
+        J.attempt(() -> IO.writeAll(f, new Gson().toJson(this)));
 
         //Never used: Hunk<String> dna = Hunk.newMappedHunk(5, 5, 5);
 
@@ -58,7 +56,7 @@ public class User {
     public static User load(long id) {
 
         return kash.compute(id, (k, v) -> {
-            if ( v == null) {
+            if (v == null) {
 
                 File f = new File("data/" + id + ".json");
                 f.getParentFile().mkdirs();
@@ -84,9 +82,10 @@ public class User {
 
 
     }
+
     static {
         //:(:[
-        Runtime.getRuntime().addShutdownHook(new Thread(()-> kash.v().forEach(User::save)));
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> kash.v().forEach(User::save)));
     }
 
 }

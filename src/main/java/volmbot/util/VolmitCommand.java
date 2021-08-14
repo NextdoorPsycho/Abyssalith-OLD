@@ -8,8 +8,10 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import volmbot.Main;
 import volmbot.toolbox.Toolkit;
 
-import java.util.*;
-import java.util.concurrent.atomic.AtomicReference;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Objects;
 
 /* Example Command Class
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
@@ -115,12 +117,11 @@ public class VolmitCommand extends ListenerAdapter {
     }
 
     // Handle
-    public void continueToHandle(List<String> args, GuildMessageReceivedEvent e){
-
+    public void continueToHandle(List<String> args, GuildMessageReceivedEvent e) {
 
 
         // Check for permissions (again, but required when passing to here directly)
-        if (getRoles() != null && getRoles().size() != 0){
+        if (getRoles() != null && getRoles().size() != 0) {
             if (noPermission(Objects.requireNonNull(e.getMember()).getRoles(), e.getAuthor().getId())) return;
         }
 
@@ -141,18 +142,18 @@ public class VolmitCommand extends ListenerAdapter {
                 Main.info(subs.toString());
                 // Pass to subcommands
                 for (VolmitCommand sub : getSubcommands()) {
-                    for (String commandAlias : sub.getCommands()){
-                        if (commandAlias.equalsIgnoreCase(args.get(1))){
+                    for (String commandAlias : sub.getCommands()) {
+                        if (commandAlias.equalsIgnoreCase(args.get(1))) {
                             sub.continueToHandle(args.subList(1, args.size()), e);
                             return;
                         }
                     }
                 }
             }
-        // Check for arg size to see if help should be sent
+            // Check for arg size to see if help should be sent
         } else if (args.size() < 2) {
             sendHelp(e.getMessage());
-        // Pass to (overwritten) handle
+            // Pass to (overwritten) handle
         } else {
             Main.info("Final command. Running: " + getName());
             handle(args, e);
@@ -160,7 +161,7 @@ public class VolmitCommand extends ListenerAdapter {
     }
 
     /* Checks if the author has any of the specified roles, or if the ID matches */
-    private boolean noPermission(List<Role> roles, String ID){
+    private boolean noPermission(List<Role> roles, String ID) {
         if (getRoles() != null && getRoles().size() != 0) {
             for (Role userRole : roles) {
                 String userRoleName = userRole.getName();
@@ -180,8 +181,8 @@ public class VolmitCommand extends ListenerAdapter {
     }
 
     /* Checks if the specified command is this command */
-    private boolean checkCommand(String command){
-        for (String cmd : getCommands()){
+    private boolean checkCommand(String command) {
+        for (String cmd : getCommands()) {
             if (command.equalsIgnoreCase(cmd)) {
                 return true;
             }
@@ -201,9 +202,9 @@ public class VolmitCommand extends ListenerAdapter {
                     cmd,
                     "\n`" + Toolkit.get().BotPrefix +
                             (getCommands().size() == 2 ?
-                            getCommands().get(1) :
-                            " " + getCommands().subList(1, getCommands().size()).toString()
-                                    .replace("[", "").replace("]", "")) +
+                                    getCommands().get(1) :
+                                    " " + getCommands().subList(1, getCommands().size()).toString()
+                                            .replace("[", "").replace("]", "")) +
                             "`\n" + getDescription(),
                     true
             );
@@ -228,13 +229,13 @@ public class VolmitCommand extends ListenerAdapter {
             } else {
                 String body =
                         "\n`" + Toolkit.get().BotPrefix +
-                        (command.getCommands().size() == 2 ?
-                                command.getCommands().get(1) :
-                                " " + command.getCommands().subList(1, command.getCommands().size()))
-                                .replace("[", "").replace("]", "") +
-                        "`\n" +
-                        command.getDescription() +
-                        (command.getExample() != null ? "\n**Usage**\n`" + Toolkit.get().BotPrefix + command.getExample() + "`": "");
+                                (command.getCommands().size() == 2 ?
+                                        command.getCommands().get(1) :
+                                        " " + command.getCommands().subList(1, command.getCommands().size()))
+                                        .replace("[", "").replace("]", "") +
+                                "`\n" +
+                                command.getDescription() +
+                                (command.getExample() != null ? "\n**Usage**\n`" + Toolkit.get().BotPrefix + command.getExample() + "`" : "");
                 embed.addField(
                         cmd,
                         body,
