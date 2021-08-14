@@ -29,8 +29,7 @@ public class Log extends VolmitCommand {
     // Handle
     @Override
     public void handle(List<String> args, GuildMessageReceivedEvent e) {
-        // TODO: Resolve webpage getting
-        String stem = args.get(0).replace("https://pastebin.com/", "");
+        String stem = args.get(1).replace("https://pastebincom/", "");
         String properURL = "https://pastebin.com/raw/" + stem;
         Document doc;
         try {
@@ -42,11 +41,11 @@ public class Log extends VolmitCommand {
             return;
         }
 
-        User a = User.load(1234);
+        User a = User.load(100001);
 
         VolmitEmbed embed = new VolmitEmbed("Automated Error Detector", e.getMessage());
         embed.setTitle("Automated Detriment Detector");
-        embed.setDescription(a.getSKey1() + "||" + args.get(1) + "||");
+        embed.setDescription(a.getSKey1() + "||" + properURL + "||");
         Main.info("PROCESSING PASTEBIN FILE");
         int prob = 0;
 

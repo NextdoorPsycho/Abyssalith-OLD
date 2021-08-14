@@ -13,31 +13,32 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 
-/* Example Command Class
+/* Example Command Class COPY AND PASTE USING THIS TO MAKE NEW COMMANDS:
+package volmbot.commands;
+
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
-import volmbot.Main;
 import volmbot.util.VolmitCommand;
-
+import volmbot.util.VolmitEmbed;
 import java.util.List;
-
-public class WikiCreate extends VolmitCommand {
+public class Ping extends VolmitCommand {
     // Constructor
-    public WikiCreate() {
+    public Ping() {
         super(
-                "CommandName",
-                new String[]{"Alias1", "Alias2", "Alias3"},
-                new String[]{}, // Add role name here. Empty: always / 1+: at least one.
-                "CommandDescription",
-                false, // Weather command needs arguments or not
-                "CommandName run example"
-                // For an example for a category, see command.Wiki
+                "ping",
+                new String[]{"links", "link"},
+                new String[]{}, // Always permitted if empty. User must have at least one if specified.
+                "Sends useful links (like the wiki)",
+                false,
+                null
         );
     }
-
     // Handle
     @Override
     public void handle(List<String> args, GuildMessageReceivedEvent e) {
-        Main.info("Command ran!");
+        VolmitEmbed embed = new VolmitEmbed(" Here you go!", e.getMessage());
+        //Commands
+        embed.addField("Name Here", "" + "Value here", false);
+        embed.send(e.getMessage(), true, 1000);
     }
 }
 
