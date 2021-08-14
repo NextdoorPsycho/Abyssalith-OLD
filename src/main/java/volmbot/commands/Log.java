@@ -4,7 +4,7 @@ import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import volmbot.Main;
-import volmbot.toolbox.User;
+import volmbot.toolbox.Director;
 import volmbot.util.VolmitCommand;
 import volmbot.util.VolmitEmbed;
 
@@ -41,7 +41,7 @@ public class Log extends VolmitCommand {
             return;
         }
 
-        User a = User.load(100001);
+        Director a = Director.load(100001);
 
         VolmitEmbed embed = new VolmitEmbed("Automated Error Detector", e.getMessage());
         embed.setTitle("Automated Detriment Detector");
@@ -78,7 +78,7 @@ public class Log extends VolmitCommand {
             embed.addField("Something I noticed: ", a.getSKey8(), false);
             prob++;
         }
-        if (!doc.text().contains("[Iris] Loading Iris")) {
+        if (!doc.text().contains("[Iris] Enabling Iris")) {
             embed.addField("This does not contain a **full** log with Iris installed, perhaps try again if you want more information.", "", false);
         }
 

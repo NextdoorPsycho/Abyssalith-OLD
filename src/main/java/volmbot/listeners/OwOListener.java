@@ -10,9 +10,12 @@ public class OwOListener extends ListenerAdapter {
     public void onGuildMessageReceived(GuildMessageReceivedEvent e) {
         if (!e.getMessage().getAuthor().isBot()) {
             if (e.getMessage().getContentRaw().toLowerCase().contains("owo")) {
-                int rand = ThreadLocalRandom.current().nextInt(10) % Toolkit.get().owo.size();
+                int rand = ThreadLocalRandom.current().nextInt(5) % Toolkit.get().owo.size();
                 String randomElement = Toolkit.get().owo.get(rand);
-                e.getChannel().sendMessage(randomElement).queue();
+                int r = ThreadLocalRandom.current().nextInt(10);
+                if (r <= 2) {
+                    e.getChannel().sendMessage(randomElement).queue();
+                }
             }
         }
     }

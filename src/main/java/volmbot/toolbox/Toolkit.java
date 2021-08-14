@@ -27,7 +27,7 @@ public class Toolkit extends ListenerAdapter {
     public String BotToken = "";//Leave blank change in config
     public String BotOwnerID = "";//Leave blank change in config
     public String BotPrefix = "";//Leave blank change in config
-    public List<String> owo = Arrays.asList("OwO", "owo", "uwu", "ÒwÓ", "Owo", "owO");
+    public List<String> owo = Arrays.asList("OwO", "owo", "uwu", "()w()", "OvO", "owO");
     // Set from main class
     public Long botID;
     public User botUser;

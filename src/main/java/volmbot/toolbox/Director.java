@@ -10,8 +10,8 @@ import java.io.File;
 import java.io.IOException;
 
 @Data
-public class User {
-    private static final KMap<Long, User> kash = new KMap<>();
+public class Director {
+    private static final KMap<Long, Director> kash = new KMap<>();
 
 
     // Add dans shitty variables here, all will be added to json perfectly // accessed
@@ -36,7 +36,7 @@ public class User {
     */
 
 
-    private User(long id) {
+    private Director(long id) {
         this.id = id;
     }
 
@@ -53,14 +53,14 @@ public class User {
 
     }
 
-    public static User load(long id) {
+    public static Director load(long id) {
 
         return kash.compute(id, (k, v) -> {
             if (v == null) {
 
                 File f = new File("data/" + id + ".json");
                 f.getParentFile().mkdirs();
-                User u = new User(id);
+                Director u = new Director(id);
 
                 if (!f.exists()) {
                     try {
@@ -70,7 +70,7 @@ public class User {
                     }
                 }
                 try {
-                    return new Gson().fromJson(IO.readAll(f), User.class);
+                    return new Gson().fromJson(IO.readAll(f), Director.class);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -85,7 +85,7 @@ public class User {
 
     static {
         //:(:[
-        Runtime.getRuntime().addShutdownHook(new Thread(() -> kash.v().forEach(User::save)));
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> kash.v().forEach(Director::save)));
     }
 
 }
