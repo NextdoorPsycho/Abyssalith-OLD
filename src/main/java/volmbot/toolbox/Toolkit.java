@@ -22,7 +22,7 @@ public class Toolkit extends ListenerAdapter {
     public String ModRole = "";//Leave blank change in config
     public String AdminRole = "";//Leave blank change in config
     public String Company = "";//Leave blank change in config
-    public String BotGIF = "https://media.giphy.com/media/mJAUdQb73H8zdPhCeI/giphy.gif";
+    public String BotGIF = "";//Leave blank change in config
     public String BotColor = "";//Leave blank change in config
     public String BotToken = "";//Leave blank change in config
     public String BotOwnerID = "";//Leave blank change in config

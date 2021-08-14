@@ -14,7 +14,7 @@ public class Shutdown extends VolmitCommand {
     public Shutdown() {
         super(
                 "Stop",
-                new String[]{"stop", "shutdown"},
+                new String[]{"stop", "shutdown", ".s"},
                 new String[]{}, // Add role name here. Empty: always / 1+: at least one.
                 "Stops the Volmbot boi",
                 false,
