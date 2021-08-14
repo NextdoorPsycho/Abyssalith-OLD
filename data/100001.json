@@ -1,32 +1,35 @@
 {
   "SKey1":"**Hello user! This is automated, and ill do my best!**\n Here is what I'm using for reference: \n",
-               "__SKey1comment":"Intro\n",
+                "__SKey1comment":"Intro\n",
 
   "SKey2":"- Iris cant find certain objects, is this intended?",
-               "__SKey2comment":"[OBJECT MISSING]",
+                "__SKey2comment":"[OBJECT MISSING]",
 
   "SKey3":"- There is a typo in one of the files in your pack folder!",
-               "__SKey3comment":"[FILE TYPO]",
+                "__SKey3comment":"[FILE TYPO]",
 
   "SKey4":"- Chunks are not generating to a Paralax bug! please report this to Support, and make it an issue on the Issue Tracker, See the channel description for that link",
-               "__SKey4comment":"[BROKEN CHUNKS]",
+                "__SKey4comment":"[BROKEN CHUNKS]",
 
   "SKey5":"- The default chunk generator is being used in the Bukkit.Yml file (not a bug, just an observation)",
-               "__SKey5comment":"[BUKKIT GENERATION]",
+                "__SKey5comment":"[BUKKIT GENERATION]",
 
   "SKey6":"- The Parallax generator is breaking trying to generate a chunk, perhaps check your configuration files",
-               "__SKey6comment":"[PARALLAX GENERATION UNABLE TO GENERATE]",
+                "__SKey6comment":"[PARALLAX GENERATION UNABLE TO GENERATE]",
 
   "SKey7":"- The server is using Supermassive trees (not a bug, just a notice)- if these objects are broken, please report that!\n **How much memory are you using?**",
-               "__SKey7comment":"[INCREASED MEM ERROR (CHECK MEM USAGE)]",
+                "__SKey7comment":"[INCREASED MEM ERROR (CHECK MEM USAGE)]",
 
-  "SKey8":"-sandbox",
-               "__SKey8comment":"[OBJECTS]",
+  "SKey8":"PLEASE turn off the paper spam! Go Here: \n https://docs.volmit.com/iris/plugin/faq",
+                "__SKey8comment":"[OBJECTS]",
 
   "SKey9":"- I cant seem to find anything here... Perhaps a Support can help\n",
-               "__SKey9comment":"The system is unaware of this error yet",
+                "__SKey9comment":"The system is unaware of this error yet",
 
   "SKey10":"Thanks for letting me try to help you!\nI hope i was somewhat helpful!",
+
+  "SKey11":"the error message sent\n",
+                "__SKey11comment":"[SOME MODIFIER]",
   "id":173261518572486656,
   "onCd":true
 }

@@ -3,11 +3,9 @@ package volmbot.commands;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import volmbot.util.VolmitCommand;
 import volmbot.util.VolmitEmbed;
-
 import java.util.List;
 
 public class Links extends VolmitCommand {
-
     // Constructor
     public Links() {
         super(

@@ -13,7 +13,7 @@ public class OwOListener extends ListenerAdapter {
                 int rand = ThreadLocalRandom.current().nextInt(5) % Toolkit.get().owo.size();
                 String randomElement = Toolkit.get().owo.get(rand);
                 int r = ThreadLocalRandom.current().nextInt(10);
-                if (r <= 2) {
+                if (r <= 1) {
                     e.getChannel().sendMessage(randomElement).queue();
                 }
             }

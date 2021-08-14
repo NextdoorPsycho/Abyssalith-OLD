@@ -13,8 +13,13 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 
-/* Example Command Class COPY AND PASTE USING THIS TO MAKE NEW COMMANDS:
-package volmbot.commands;
+//  --- Example Command Class COPY AND PASTE USING THIS TO MAKE NEW COMMANDS (3 EASY STEPS): ---
+//  1: MAKE A NEW CLASS,
+//  2: REGISTER IT IN "Main"
+//  3: PASTE THE CONTENTS BELOW INTO IT, ANF FORMAT TO YOUR HEARTS DESIRE
+//  --- IF DONE PROPERLY YOUR COMMAND WILL APPEAR IN THE HELP MENU ---
+
+/*package volmbot.commands;
 
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import volmbot.util.VolmitCommand;
@@ -25,7 +30,7 @@ public class Ping extends VolmitCommand {
     public Ping() {
         super(
                 "ping",
-                new String[]{"links", "link"},
+                new String[]{"ping", "p"},
                 new String[]{}, // Always permitted if empty. User must have at least one if specified.
                 "Sends useful links (like the wiki)",
                 false,

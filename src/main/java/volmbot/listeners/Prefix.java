@@ -10,7 +10,7 @@ public class Prefix extends ListenerAdapter {
     public void onGuildMessageReceived(GuildMessageReceivedEvent e) {
         if (e.getMessage().getContentRaw().contains(Main.getJDA().getSelfUser().getId())) {
             String Sender = e.getMessage().getAuthor().getName();
-            VolmitEmbed embed = new VolmitEmbed("ಥ_ಥ", e.getMessage());
+            VolmitEmbed embed = new VolmitEmbed("¯\\_(ツ)_/¯", e.getMessage());
             embed
                     .setAuthor("Hello " + Sender)
                     .setDescription("Everytime you @ me, it hurts... Use my prefix please.")

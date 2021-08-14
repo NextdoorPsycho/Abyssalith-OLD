@@ -4,14 +4,15 @@ import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import volmbot.util.VolmitCommand;
 import volmbot.util.VolmitEmbed;
 import java.util.List;
+
 public class Ping extends VolmitCommand {
     // Constructor
     public Ping() {
         super(
                 "ping",
-                new String[]{"links", "link"},
+                new String[]{"ping", "p"},
                 new String[]{}, // Always permitted if empty. User must have at least one if specified.
-                "Sends useful links (like the wiki)",
+                "Useful for Pings!",
                 false,
                 null
         );
@@ -19,9 +20,10 @@ public class Ping extends VolmitCommand {
     // Handle
     @Override
     public void handle(List<String> args, GuildMessageReceivedEvent e) {
-        VolmitEmbed embed = new VolmitEmbed(" Here you go!", e.getMessage());
+        VolmitEmbed embed = new VolmitEmbed(" PONG!", e.getMessage());
         //Commands
-        embed.addField("Name Here", "" + "Value here", false);
+        //embed.addField("Name Here", "" + "Value here", false);
         embed.send(e.getMessage(), true, 1000);
+
     }
 }

@@ -74,8 +74,8 @@ public class Log extends VolmitCommand {
             embed.addField("Large objects are in use", a.getSKey7(), false);
             prob++;
         }
-        if (doc.text().contains("true")) { // Use element.text() to get the text of the element as a String
-            embed.addField("Something I noticed: ", a.getSKey8(), false);
+        if (doc.text().contains("DO NOT REPORT THIS TO PAPER - THIS IS NOT A BUG OR A CRASH")) { // Use element.text() to get the text of the element as a String
+            embed.addField("Paper Watchdog Spam", a.getSKey8(), false);
             prob++;
         }
         if (!doc.text().contains("[Iris] Enabling Iris")) {
