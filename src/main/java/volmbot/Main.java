@@ -16,11 +16,9 @@ import org.slf4j.LoggerFactory;
 import volmbot.commands.Shutdown;
 import volmbot.commands.*;
 import volmbot.listeners.AutoWiki;
-import volmbot.listeners.TZHeartListener;
 import volmbot.listeners.OwOListener;
 import volmbot.listeners.Prefix;
 import volmbot.toolbox.Toolkit;
-import volmbot.util.IndexedWiki;
 
 import javax.security.auth.login.LoginException;
 import java.net.URL;
@@ -43,8 +41,6 @@ public class Main extends ListenerAdapter {
         // Load toolkit definitions
         Toolkit.get();
 
-        // Load wikis
-        LOGGER.info(IndexedWiki.loadAll());
 
         // Build JDA
         jda = JDABuilder.createDefault(Toolkit.BotToken).build();
@@ -73,15 +69,12 @@ public class Main extends ListenerAdapter {
         jda.addEventListener(new OwOListener());
         jda.addEventListener(new AutoWiki());
         jda.addEventListener(new Prefix());
-        jda.addEventListener(new TZHeartListener());
 
         // Commands
         jda.addEventListener(new Links());
         jda.addEventListener(new Poll());
         jda.addEventListener(new Log());
-        jda.addEventListener(new Wiki());
         jda.addEventListener(new Shutdown());
-        jda.addEventListener(new Testr());
         jda.addEventListener(new Commands(jda)); // This one MUST be last
 
         new Looper() {

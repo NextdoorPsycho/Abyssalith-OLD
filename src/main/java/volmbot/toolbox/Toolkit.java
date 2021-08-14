@@ -23,10 +23,10 @@ public class Toolkit extends ListenerAdapter {
     public static String AdminRole = "Admin";
     public static String Company = "Volmit Software";
     public static String BotGIF = "https://media.giphy.com/media/mJAUdQb73H8zdPhCeI/giphy.gif";
-    public static String BotColor = "0x003b6f";
-    public static String BotToken = "ODIxNTM1NDMzMDcwMzQ2Mjcy.YFFIfg.LzFkEKTSYv4YDlrP4iOJ2ooA7B0";
+    public static String BotColor = "0xFFFF00";
+    public static String BotToken = "ODc1OTczMTYxODkwNTA4ODMw.YRdTlA.CbQTuIkYBIPjKv6vZQXWJPrcb7g";
     public static String BotOwnerID = "";//Leave blank change in config
-    public static String BotPrefix = "!";
+    public static String BotPrefix = ".";
     public static List<String> owo = Arrays.asList("OwO", "owo", "uwu", "ÒwÓ", "□w□", "●w●", "Owo", "owO", "♡w♡", "**OWO GET INTO MY PANTS NOW,  AND NUZZLE ME**");
     // Set from main class
     public static Long botID;
