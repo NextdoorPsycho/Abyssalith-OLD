@@ -9,16 +9,16 @@ import volmbot.util.VolmitEmbed;
 
 import java.util.List;
 
-public class Take extends VolmitCommand {
+public class Set extends VolmitCommand {
     // Constructor
-    public Take() {
+    public Set() {
         super(
-                "ecoremove", //Name
-                new String[]{".ecoremove","er","eremove"}, //Alias's
+                "ecoset", //Name
+                new String[]{"ecoset","es","eset"}, //Alias's
                 new String[]{"ADMINISTRATOR"}, // Always permitted if empty. User must have at least one if specified.
-                "Takes a Number of currency to the user", // Description
+                "Sets the users balance", // Description
                 true, // Does it use Args
-                "*.er 10 @Psycho*" //Example - the prefix
+                "*.es 10 @Psycho*" //Example - the prefix
         );
     }
 
@@ -29,8 +29,8 @@ public class Take extends VolmitCommand {
         String moneyEmoji = Toolkit.get().MoneyEmoji;
 
         VolmitEmbed embed = new VolmitEmbed("Transaction Receipt!", e.getMessage());
-        embed.addField(moneyEmoji+ moneyName+ " removed: ", args.get(1) + " Removed By: " + e.getAuthor().getAsMention(), false);
-        Econator.Sub(e.getMessage(), Integer.parseInt(args.get(1)));
+        embed.addField(moneyEmoji+ moneyName+ " set: ", args.get(1) + " Set By: " + e.getAuthor().getAsMention(), false);
+        Econator.Set(e.getMessage(), Integer.parseInt(args.get(1)));
         UserDirector m = UserDirector.load(e.getMessage().getMentionedMembers().get(0).getIdLong());
         embed.addField("New Total For " + e.getMessage().getMentionedMembers().get(0).getEffectiveName() + ": ", m.getMoney(), false);
         embed.send(e.getMessage(), true, 1000);

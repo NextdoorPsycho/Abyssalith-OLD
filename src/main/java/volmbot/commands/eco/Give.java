@@ -13,12 +13,12 @@ public class Give extends VolmitCommand {
     // Constructor
     public Give() {
         super(
-                "Ecogive", //Name
-                new String[]{"eg", "ecogive","eadd"}, //Alias's
+                "ecogive", //Name
+                new String[]{".ecogive","eg","eadd"}, //Alias's
                 new String[]{"ADMINISTRATOR"}, // Always permitted if empty. User must have at least one if specified.
-                "Gives a Number of money to the user", // Description
+                "Gives a Number of currency to the user", // Description
                 true, // Does it use Args
-                "ecogive 1000 @nextdoorPsycho" //Example - the prefix
+                "*.eg 10 @Psycho*" //Example - the prefix
         );
     }
 

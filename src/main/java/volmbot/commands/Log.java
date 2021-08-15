@@ -17,8 +17,8 @@ public class Log extends VolmitCommand {
     // Constructor
     public Log() {
         super(
-                "Log",
-                new String[]{},
+                "log",
+                new String[]{"log", "pastebin", "autohelp"},
                 new String[]{}, // Add role name here. Empty: always / 1+: at least one.
                 "Analyses a log file with for some common errors",
                 true,

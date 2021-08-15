@@ -13,8 +13,8 @@ public class Shutdown extends VolmitCommand {
     // Constructor
     public Shutdown() {
         super(
-                "Stop",
-                new String[]{"stop","shutdown",".s"},
+                "stop",
+                new String[]{"stop","kill",".s"},
                 new String[]{}, // Add role name here. Empty: always / 1+: at least one.
                 "Stops the Bot boi",
                 false,

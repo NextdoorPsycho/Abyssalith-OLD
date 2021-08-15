@@ -21,8 +21,8 @@ public class Poll extends VolmitCommand {
     // Constructor
     public Poll() {
         super(
-                "Poll",
-                new String[]{},
+                "poll",
+                new String[]{"poll", "ask"},
                 new String[]{/*Toolkit.get().ModRole*/}, // Add role name here. Empty: always / 1+: at least one.
                 "Poll creator. (max 20 options)",
                 true,
@@ -33,6 +33,7 @@ public class Poll extends VolmitCommand {
     // Handle
     @Override
     public void handle(List<String> args, GuildMessageReceivedEvent event) {
+
         String msg = event.getMessage().getContentRaw();
         if(!args.isEmpty()) {
             List<String> pollArgs = Arrays.asList(msg.split(" ", 2)[1].split(","));
@@ -60,5 +61,7 @@ public class Poll extends VolmitCommand {
             //todo Wrong usage
         }
     }
+
+
 }
 

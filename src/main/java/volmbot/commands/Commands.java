@@ -32,12 +32,12 @@ public class Commands extends VolmitCommand {
     public void handle(List<String> args, GuildMessageReceivedEvent e) {
 
         // Init embed
-        VolmitEmbed embed = new VolmitEmbed("" + Toolkit.get().botName + " Info Page!**", e.getMessage());
+        VolmitEmbed embed = new VolmitEmbed("The Abyssalith - " + Toolkit.get().botName + " Info Page!", e.getMessage());
 
         // Add explanation
         embed.addField(
                 "All commands you can use",
-                Toolkit.get().BotPrefix + "<command> followed by a list of aliases",
+                Toolkit.get().BotPrefix + "<command> for more help on the command",
                 false
         );
 
@@ -54,7 +54,7 @@ public class Commands extends VolmitCommand {
                         .append(
                                 command.getCommands().size() == 2 ?
                                         command.getCommands().get(1) :
-                                        " " + command.getCommands().subList(1, command.getCommands().size()).toString()
+                                        "" + command.getCommands().subList(1, command.getCommands().size()).toString()
                                                 .replace("[", "").replace("]", "")
                         )
                         .append("`\n")
