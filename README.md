@@ -7,6 +7,7 @@ This bot's repository is just a repo for a small server bot being that can do th
 **This should help you get setup using this bot:**
 
 - When you compule the bot, and execute the bot(as a jar. Use a `.bat` file), Make this your config file
+- You need to use Gradlew shadowJar
 - Location of config file: `config/toolkit.json` in a folder next to your bot
 ```json
 {
