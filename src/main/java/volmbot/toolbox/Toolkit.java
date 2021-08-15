@@ -21,6 +21,8 @@ public class Toolkit extends ListenerAdapter {
     // Set from config
     public String ModRole = "";//Leave blank change in config
     public String AdminRole = "";//Leave blank change in config
+    public String MoneyName = "";//Leave blank change in config
+    public String MoneyEmoji = "";//Leave blank change in config
     public String Company = "";//Leave blank change in config
     public String BotGIF = "";//Leave blank change in config
     public String BotColor = "";//Leave blank change in config

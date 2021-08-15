@@ -60,8 +60,10 @@ public class Main extends ListenerAdapter {
         // Money Commands
         getJDA().addEventListener(new Give());
         getJDA().addEventListener(new Take());
+
         // Commands
         getJDA().addEventListener(new Links());
+        getJDA().addEventListener(new Stats());
         getJDA().addEventListener(new Ping());
         getJDA().addEventListener(new Poll());
         getJDA().addEventListener(new Log());
