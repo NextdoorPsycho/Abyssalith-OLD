@@ -3,12 +3,13 @@ package volmbot.util;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import volmbot.toolbox.Director;
+import volmbot.toolbox.UserDirector;
 
 public class Econator extends ListenerAdapter {
     public static void Add(Message msg, int num) {
         long f = msg.getMentionedMembers().get(0).getIdLong();
 
-        Director m = Director.load(f); // Make a new Director for the User if its not there
+        UserDirector m = UserDirector.load(f); // Make a new Director for the User if its not there
         m.save(); // Save it because why not
 
         int money;
@@ -26,7 +27,7 @@ public class Econator extends ListenerAdapter {
     public static void Sub(Message msg, int num) {
         long f = msg.getMentionedMembers().get(0).getIdLong();
 
-        Director m = Director.load(f); // Make a new Director for the User if its not there
+        UserDirector m = UserDirector.load(f); // Make a new Director for the User if its not there
         m.save(); // Save it because why not
 
         int money;
