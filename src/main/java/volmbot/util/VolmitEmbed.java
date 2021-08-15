@@ -37,7 +37,7 @@ public class VolmitEmbed extends EmbedBuilder {
         this.setAuthor("Requested by: " + message.getAuthor().getName(), null, message.getAuthor().getAvatarUrl())
                 .setTitle(!title.equals("") ? title : "\u200E")
                 .setColor(Color.decode(Toolkit.get().BotColor))
-                .setFooter(Toolkit.get().Company, Toolkit.get().BotGIF);
+                .setFooter("Made By: " + Toolkit.get().Company, Toolkit.get().BotGIF);
     }
 
     /*

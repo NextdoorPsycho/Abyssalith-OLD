@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import volmbot.commands.Shutdown;
 import volmbot.commands.*;
 import volmbot.commands.eco.Give;
+import volmbot.commands.eco.Take;
 import volmbot.listeners.AutoWiki;
 import volmbot.listeners.OwOListener;
 import volmbot.listeners.Prefix;
@@ -58,6 +59,7 @@ public class Main extends ListenerAdapter {
 
         // Money Commands
         getJDA().addEventListener(new Give());
+        getJDA().addEventListener(new Take());
         // Commands
         getJDA().addEventListener(new Links());
         getJDA().addEventListener(new Ping());

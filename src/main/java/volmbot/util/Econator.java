@@ -1,2 +1,45 @@
-package volmbot.util;public class Econator {
+package volmbot.util;
+
+import net.dv8tion.jda.api.entities.Message;
+import net.dv8tion.jda.api.hooks.ListenerAdapter;
+import volmbot.toolbox.Director;
+
+public class Econator extends ListenerAdapter {
+    public static void Add(Message msg, int num) {
+        long f = msg.getMentionedMembers().get(0).getIdLong();
+
+        Director m = Director.load(f); // Make a new Director for the User if its not there
+        m.save(); // Save it because why not
+
+        int money;
+        try {
+            money = Integer.parseInt(m.getMoney());  // Get stuff to int
+            money = Math.addExact(money, num); // Add
+            m.setMoney(String.valueOf(money)); // Set values
+            System.out.println(money); // output debug
+            m.save(); // Save
+        } catch (NumberFormatException ex) {
+            ex.printStackTrace();
+        }
+
+    }
+    public static void Sub(Message msg, int num) {
+        long f = msg.getMentionedMembers().get(0).getIdLong();
+
+        Director m = Director.load(f); // Make a new Director for the User if its not there
+        m.save(); // Save it because why not
+
+        int money;
+        try {
+            money = Integer.parseInt(m.getMoney());  // Get stuff to int
+            money = Math.subtractExact(money, num); // Subtract
+            m.setMoney(String.valueOf(money)); // Set values
+            System.out.println(money); // output debug
+            m.save(); // Save
+        } catch (NumberFormatException ex) {
+            ex.printStackTrace();
+        }
+
+    }
+
 }
