@@ -18,7 +18,7 @@ public class Give extends VolmitCommand {
                 new String[]{"ADMINISTRATOR"}, // Always permitted if empty. User must have at least one if specified.
                 "Gives a Number of currency to the user", // Description
                 true, // Does it use Args
-                ".eg 10 @Psycho" //Example - the prefix
+                "eg 10 @Psycho" //Example - the prefix
         );
     }
 

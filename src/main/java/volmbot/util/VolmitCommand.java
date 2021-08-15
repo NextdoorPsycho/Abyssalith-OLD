@@ -112,14 +112,11 @@ public class VolmitCommand extends ListenerAdapter {
         // Prevent non-permitted users
         if (noPermission(Objects.requireNonNull(e.getMember()).getRoles(), e.getAuthor().getId())) return;
 
-        if(args.get(0).contains(Toolkit.get().BotPrefix))
-
         // Convert args
         List<String> args = new LinkedList<>(Arrays.asList(e.getMessage().getContentRaw().replace(Toolkit.get().BotPrefix, " ").split(" ")));
 
         // Check match command
         if (!checkCommand(args.get(0))) return;
-
 
         // Print success and continue
         continueToHandle(args, e);
@@ -201,7 +198,7 @@ public class VolmitCommand extends ListenerAdapter {
 
     /* Sends a help message for this command's usage in the specified message's channel */
     public void sendHelp(Message message) {
-        VolmitEmbed embed = new VolmitEmbed(getName() + " Command Usage", message);
+        VolmitEmbed embed = new VolmitEmbed(Toolkit.get().BotPrefix + getName() + " Command Usage", message);
 
         String cmd = Toolkit.get().BotPrefix + getName().substring(0, 1).toUpperCase() + getName().substring(1);
         if (getCommands().size() < 2) {

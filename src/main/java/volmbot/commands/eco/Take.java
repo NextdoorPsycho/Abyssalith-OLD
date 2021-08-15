@@ -18,7 +18,7 @@ public class Take extends VolmitCommand {
                 new String[]{"ADMINISTRATOR"}, // Always permitted if empty. User must have at least one if specified.
                 "Takes a Number of currency to the user", // Description
                 true, // Does it use Args
-                "*.er 10 @Psycho*" //Example - the prefix
+                "er 10 @Psycho" //Example - the prefix
         );
     }
 
