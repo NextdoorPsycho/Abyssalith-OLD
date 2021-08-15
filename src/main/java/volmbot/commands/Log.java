@@ -36,7 +36,7 @@ public class Log extends VolmitCommand {
             URL url = new URL(properURL);
             doc = Jsoup.parse(url.openStream(), "UTF-8", url.toString()); // Get Document object ('url' is a java.net.URL object)
         } catch (IOException ex) {
-            e.getChannel().sendMessage("Issue when processing URL. Please double-check");
+            e.getChannel().sendMessage("Issue when processing URL. Please double-check!");
             ex.printStackTrace();
             return;
         }
