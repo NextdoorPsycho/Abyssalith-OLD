@@ -22,7 +22,7 @@ public class Poll extends VolmitCommand {
     public Poll() {
         super(
                 "poll",
-                new String[]{"poll", "ask"},
+                new String[]{},
                 new String[]{/*Toolkit.get().ModRole*/}, // Add role name here. Empty: always / 1+: at least one.
                 "Poll creator. (max 20 options)",
                 true,

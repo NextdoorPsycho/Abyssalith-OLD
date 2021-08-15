@@ -112,11 +112,14 @@ public class VolmitCommand extends ListenerAdapter {
         // Prevent non-permitted users
         if (noPermission(Objects.requireNonNull(e.getMember()).getRoles(), e.getAuthor().getId())) return;
 
+        if(args.get(0).contains(Toolkit.get().BotPrefix))
+
         // Convert args
-        List<String> args = new LinkedList<>(Arrays.asList(e.getMessage().getContentRaw().replace(Toolkit.get().BotPrefix, "").split(" ")));
+        List<String> args = new LinkedList<>(Arrays.asList(e.getMessage().getContentRaw().replace(Toolkit.get().BotPrefix, " ").split(" ")));
 
         // Check match command
         if (!checkCommand(args.get(0))) return;
+
 
         // Print success and continue
         continueToHandle(args, e);

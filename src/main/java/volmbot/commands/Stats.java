@@ -17,7 +17,7 @@ public class Stats extends VolmitCommand {
     public Stats() {
         super(
                 "Stats",
-                new String[]{"stats", "statistics"},
+                new String[]{},
                 new String[]{}, // Always permitted if empty. User must have at least one if specified.
                 "Reveals all statistic information from the server",
                 false,

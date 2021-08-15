@@ -14,7 +14,7 @@ public class Take extends VolmitCommand {
     public Take() {
         super(
                 "ecoremove", //Name
-                new String[]{".ecoremove","er","eremove"}, //Alias's
+                new String[]{"er","eremove"}, //Alias's
                 new String[]{"ADMINISTRATOR"}, // Always permitted if empty. User must have at least one if specified.
                 "Takes a Number of currency to the user", // Description
                 true, // Does it use Args

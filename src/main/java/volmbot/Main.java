@@ -64,6 +64,7 @@ public class Main extends ListenerAdapter {
         getJDA().addEventListener(new Set());
 
         // Commands
+        getJDA().addEventListener(new RoleManager());
         getJDA().addEventListener(new Links());
         getJDA().addEventListener(new Stats());
         getJDA().addEventListener(new Ping());

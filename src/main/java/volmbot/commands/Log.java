@@ -18,7 +18,7 @@ public class Log extends VolmitCommand {
     public Log() {
         super(
                 "log",
-                new String[]{"log", "pastebin", "autohelp"},
+                new String[]{"pastebin","pb"},
                 new String[]{}, // Add role name here. Empty: always / 1+: at least one.
                 "Analyses a log file with for some common errors",
                 true,
@@ -36,7 +36,6 @@ public class Log extends VolmitCommand {
             URL url = new URL(properURL);
             doc = Jsoup.parse(url.openStream(), "UTF-8", url.toString()); // Get Document object ('url' is a java.net.URL object)
         } catch (IOException ex) {
-            e.getChannel().sendMessage("Issue when processing URL. Please double-check!");
             ex.printStackTrace();
             return;
         }

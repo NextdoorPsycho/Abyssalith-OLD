@@ -18,7 +18,7 @@ public class Commands extends VolmitCommand {
     public Commands(JDA jda) {
         super(
                 "commands",
-                new String[]{"commands","command","cmd","help","?"},
+                new String[]{"cmd","help","?"},
                 new String[]{}, // Always permitted if empty. User must have at least one if specified.
                 "Sends the command help page (this one)",
                 false,

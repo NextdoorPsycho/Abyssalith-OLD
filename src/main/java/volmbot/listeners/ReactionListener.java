@@ -1,2 +1,4 @@
-package volmbot.listeners;public class ReactionListener {
+package volmbot.listeners;
+
+public class ReactionListener {
 }
