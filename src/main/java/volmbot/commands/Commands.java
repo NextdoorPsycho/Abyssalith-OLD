@@ -32,7 +32,7 @@ public class Commands extends VolmitCommand {
     public void handle(List<String> args, GuildMessageReceivedEvent e) {
 
         // Init embed
-        VolmitEmbed embed = new VolmitEmbed("¯\\_(ツ)_/¯ **" + Toolkit.get().botName + " Info Page!**", e.getMessage());
+        VolmitEmbed embed = new VolmitEmbed("" + Toolkit.get().botName + " Info Page!**", e.getMessage());
 
         // Add explanation
         embed.addField(

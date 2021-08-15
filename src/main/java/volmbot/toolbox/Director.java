@@ -25,6 +25,7 @@ public class Director {
     private String SKey3 = "";
     private String SKey2 = "";
     private String SKey1 = "";
+    private String Money = "0";
     private long id;
     private Boolean onCd = false;
 
