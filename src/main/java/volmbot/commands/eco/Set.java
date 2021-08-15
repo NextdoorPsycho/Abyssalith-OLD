@@ -13,8 +13,8 @@ public class Set extends VolmitCommand {
     // Constructor
     public Set() {
         super(
-                "ecoset", //Name
-                new String[]{"ecoset","es","eset"}, //Alias's
+                "set", //Name
+                new String[]{}, //Alias's
                 new String[]{"ADMINISTRATOR"}, // Always permitted if empty. User must have at least one if specified.
                 "Sets the users balance", // Description
                 true, // Does it use Args

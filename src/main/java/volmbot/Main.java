@@ -9,14 +9,8 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import volmbot.commands.Shutdown;
 import volmbot.commands.*;
-import volmbot.commands.eco.Give;
-import volmbot.commands.eco.Set;
-import volmbot.commands.eco.Take;
-import volmbot.listeners.AutoWiki;
-import volmbot.listeners.OwOListener;
-import volmbot.listeners.Prefix;
+import volmbot.listeners.*;
 import volmbot.toolbox.Toolkit;
 
 import javax.security.auth.login.LoginException;
@@ -59,9 +53,7 @@ public class Main extends ListenerAdapter {
         getJDA().addEventListener(new Prefix());
 
         // Money Commands
-        getJDA().addEventListener(new Give());
-        getJDA().addEventListener(new Take());
-        getJDA().addEventListener(new Set());
+        getJDA().addEventListener(new Eco());
 
         // Commands
         getJDA().addEventListener(new RoleManager());

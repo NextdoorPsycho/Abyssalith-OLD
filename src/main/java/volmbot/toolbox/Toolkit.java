@@ -19,16 +19,16 @@ import java.util.List;
 
 public class Toolkit extends ListenerAdapter {
     // Set from config
-    public String ModRole = "";//Leave blank change in config
-    public String AdminRole = "";//Leave blank change in config
-    public String MoneyName = "";//Leave blank change in config
-    public String MoneyEmoji = "";//Leave blank change in config
-    public String Company = "";//Leave blank change in config
-    public String BotGIF = "";//Leave blank change in config
-    public String BotColor = "";//Leave blank change in config
-    public String BotToken = "";//Leave blank change in config
-    public String BotOwnerID = "";//Leave blank change in config
-    public String BotPrefix = "";//Leave blank change in config
+    public String ModRole;//Leave blank change in config
+    public String AdminRole;//Leave blank change in config
+    public String MoneyName;//Leave blank change in config
+    public String MoneyEmoji;//Leave blank change in config
+    public String Company;//Leave blank change in config
+    public String BotGIF;//Leave blank change in config
+    public String BotColor;//Leave blank change in config
+    public String BotToken;//Leave blank change in config
+    public String BotOwnerID;//Leave blank change in config
+    public String BotPrefix;//Leave blank change in config
     public List<String> owo = Arrays.asList("OwO", "owo", "uwu", "()w()", "OvO", "owO");
     // Set from main class
     public Long botID;

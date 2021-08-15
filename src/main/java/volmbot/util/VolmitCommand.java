@@ -68,7 +68,6 @@ public class VolmitCommand extends ListenerAdapter {
     @Getter
     public List<VolmitCommand> subcommands;
 
-    // Empty creator. Please don't use this.
 
     // Creator sets name, command aliases, requires any one of entered roles, and adds a description and example
     public VolmitCommand(String name, String[] commands, String[] roles, String description, boolean needsArguments, String example) {
@@ -101,6 +100,7 @@ public class VolmitCommand extends ListenerAdapter {
     // Override me!
     public void handle(List<String> args, GuildMessageReceivedEvent e) {
         e.getMessage().reply("The command you ran is improperly written. The handle() must be overwritten.");
+        System.out.println("Made it to a bad place");
     }
 
     // Handles prefix, handles bot users.
@@ -113,7 +113,7 @@ public class VolmitCommand extends ListenerAdapter {
         if (noPermission(Objects.requireNonNull(e.getMember()).getRoles(), e.getAuthor().getId())) return;
 
         // Convert args
-        List<String> args = new LinkedList<>(Arrays.asList(e.getMessage().getContentRaw().replace(Toolkit.get().BotPrefix, " ").split(" ")));
+        List<String> args = new LinkedList<>(Arrays.asList(e.getMessage().getContentRaw().split(" ")));
 
         // Check match command
         if (!checkCommand(args.get(0))) return;
@@ -125,12 +125,10 @@ public class VolmitCommand extends ListenerAdapter {
     // Handle
     public void continueToHandle(List<String> args, GuildMessageReceivedEvent e) {
 
-
         // Check for permissions (again, but required when passing to here directly)
         if (getRoles() != null && getRoles().size() != 0) {
             if (noPermission(Objects.requireNonNull(e.getMember()).getRoles(), e.getAuthor().getId())) return;
         }
-
         // Print info message
         Main.info("Command passed checks: " + getName());
 

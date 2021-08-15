@@ -17,13 +17,14 @@ public class Commands extends VolmitCommand {
     // Constructor
     public Commands(JDA jda) {
         super(
-                "commands",
+                "Commands",
                 new String[]{"commands","?","help"},
                 new String[]{}, // Always permitted if empty. User must have at least one if specified.
                 "Sends the command help page (this one)",
                 false,
                 null
         );
+        System.out.println(Toolkit.get().BotPrefix);
         setCommands(processCMDs(jda));
     }
 

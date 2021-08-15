@@ -10,7 +10,7 @@ public class Ping extends VolmitCommand {
     public Ping() {
         super(
                 "ping",
-                new String[]{"ping","hello","p"},
+                new String[]{"!hello","p"},
                 new String[]{}, // Always permitted if empty. User must have at least one if specified.
                 "Useful for Pings!",
                 false,
