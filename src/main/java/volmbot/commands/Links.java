@@ -10,7 +10,7 @@ public class Links extends VolmitCommand {
     public Links() {
         super(
                 "links",
-                new String[]{"link"},
+                new String[]{"links","link"},
                 new String[]{}, // Always permitted if empty. User must have at least one if specified.
                 "*Sends useful links (like the wiki)*",
                 false,
