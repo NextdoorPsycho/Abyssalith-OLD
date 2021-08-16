@@ -1,12 +1,9 @@
 package volmbot.commands;
 
 import net.dv8tion.jda.api.EmbedBuilder;
-import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
-import net.dv8tion.jda.api.requests.restaction.MessageAction;
 import volmbot.toolbox.Toolkit;
 import volmbot.util.VolmitCommand;
-import volmbot.util.VolmitEmbed;
 
 import java.awt.*;
 import java.util.Arrays;
