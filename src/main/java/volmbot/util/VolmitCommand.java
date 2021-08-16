@@ -127,7 +127,6 @@ public class VolmitCommand extends ListenerAdapter {
 
     // Handle
     public void continueToHandle(List<String> args, GuildMessageReceivedEvent e) {
-        System.out.println(args);
 
         // Check for permissions (again, but required when passing to here directly)
         if (getRoles() != null && getRoles().size() != 0) {

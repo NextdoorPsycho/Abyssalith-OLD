@@ -10,31 +10,25 @@ import java.io.File;
 import java.io.IOException;
 
 @Data
-public class UserDirector {
-    private static final KMap<Long, UserDirector> kash = new KMap<>();
+public class ReactionRoleDirector {
+    private static final KMap<Long, ReactionRoleDirector> kash = new KMap<>();
 
 
     // Add dans shitty variables here, all will be added to json perfectly // accessed
-    private String SKey1 = "";
-    private String Money = "0";
-    private long id;
-    private Boolean onCd = false;
+    private String rolePostId = "";
+    private String roleChannelId = "";
+    private String reactionEmojiId = "";
+    private long rId;
 
 
-    /*
-    User s = User.load(id);
-    //FAST Save
-    J.a(s::save);
-    */
 
-
-    private UserDirector(long id) {
-        this.id = id;
+    private ReactionRoleDirector(long id) {
+        this.rId = id;
     }
 
 
     public void save() {
-        File f = new File("data/Users/" + id + ".json");
+        File f = new File("data/ReactionRoles/" + rId + ".json");
         f.getParentFile().mkdirs();
 
         //Try-catch, but better ;)
@@ -45,14 +39,14 @@ public class UserDirector {
 
     }
 
-    public static UserDirector load(long id) {
+    public static ReactionRoleDirector load(long id) {
 
         return kash.compute(id, (k, v) -> {
             if (v == null) {
 
-                File f = new File("data/Users/" + id + ".json");
+                File f = new File("data/ReactionRoles/" + id + ".json");
                 f.getParentFile().mkdirs();
-                UserDirector u = new UserDirector(id);
+                ReactionRoleDirector u = new ReactionRoleDirector(id);
 
                 if (!f.exists()) {
                     try {
@@ -62,7 +56,7 @@ public class UserDirector {
                     }
                 }
                 try {
-                    return new Gson().fromJson(IO.readAll(f), UserDirector.class);
+                    return new Gson().fromJson(IO.readAll(f), ReactionRoleDirector.class);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -77,7 +71,7 @@ public class UserDirector {
 
     static {
         //:(:[
-        Runtime.getRuntime().addShutdownHook(new Thread(() -> kash.v().forEach(UserDirector::save)));
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> kash.v().forEach(ReactionRoleDirector::save)));
     }
 
 }
