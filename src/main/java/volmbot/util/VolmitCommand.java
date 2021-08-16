@@ -114,6 +114,9 @@ public class VolmitCommand extends ListenerAdapter {
 
         // Convert args
         List<String> args = new LinkedList<>(Arrays.asList(e.getMessage().getContentRaw().replace(Toolkit.get().BotPrefix, "").split(" ")));
+        List<String> argc = new LinkedList<>(Arrays.asList(e.getMessage().getContentRaw().split(" ")));
+        if (!argc.get(0).contains(Toolkit.get().BotPrefix)) return; // ignore
+
 
         // Check match command
         if (!checkCommand(args.get(0))) return;
@@ -124,6 +127,7 @@ public class VolmitCommand extends ListenerAdapter {
 
     // Handle
     public void continueToHandle(List<String> args, GuildMessageReceivedEvent e) {
+        System.out.println(args);
 
         // Check for permissions (again, but required when passing to here directly)
         if (getRoles() != null && getRoles().size() != 0) {
