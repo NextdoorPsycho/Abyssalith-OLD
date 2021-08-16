@@ -51,7 +51,7 @@ public class Main extends ListenerAdapter {
         getJDA().addEventListener(new OwOListener());
         getJDA().addEventListener(new AutoWiki());
         getJDA().addEventListener(new Prefix());
-
+        //getJDA().addEventListener(new ReactionListener()); //BROKEN
         // Money Commands
         getJDA().addEventListener(new Eco());
 
@@ -62,6 +62,7 @@ public class Main extends ListenerAdapter {
         getJDA().addEventListener(new Ping());
         getJDA().addEventListener(new Poll());
         getJDA().addEventListener(new Log());
+        getJDA().addEventListener(new Paste());
         getJDA().addEventListener(new Shutdown());
         getJDA().addEventListener(new Commands(getJDA())); // This one MUST be last
 

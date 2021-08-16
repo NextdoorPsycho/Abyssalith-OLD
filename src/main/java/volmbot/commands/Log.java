@@ -1,95 +1,46 @@
 package volmbot.commands;
 
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import volmbot.Main;
-import volmbot.toolbox.Director;
 import volmbot.util.VolmitCommand;
 import volmbot.util.VolmitEmbed;
 
-import java.io.IOException;
-import java.net.URL;
 import java.util.List;
-
 
 public class Log extends VolmitCommand {
     // Constructor
     public Log() {
         super(
                 "log",
-                new String[]{"log","pastebin","pb"},
-                new String[]{}, // Add role name here. Empty: always / 1+: at least one.
-                "Analyses a log file with for some common errors",
-                true,
-                "log <pastebin link>"
+                new String[]{"log","l"},
+                new String[]{}, // Always permitted if empty. User must have at least one if specified.
+                "Gets the log message reply",
+                false,
+                null
         );
     }
-
     // Handle
     @Override
     public void handle(List<String> args, GuildMessageReceivedEvent e) {
-        String stem = args.get(1).replace("https://pastebincom/", "");
-        String properURL = "https://pastebin.com/raw/" + stem;
-        Document doc;
-        try {
-            URL url = new URL(properURL);
-            doc = Jsoup.parse(url.openStream(), "UTF-8", url.toString()); // Get Document object ('url' is a java.net.URL object)
-        } catch (IOException ex) {
-            ex.printStackTrace();
-            return;
-        }
+        VolmitEmbed embed = new VolmitEmbed("**WHAT IS A LOG?**", e.getMessage());
+        embed.setDescription("This message was sent because we are asking for a log, and you don't know how to get one, or sent something that is not a log. *If you are worried about privacy you can have a private thread for support, just ask the support team and we can get that setup for you!*");
+        embed.addField("*__Why do we ask for Logs__*",
+                "**1:** so we can see what  the actual problem is.\n" +
+                "**2:**  so we can check what parts are failing\n" +
+                "**3:**  to see Versions for Java, Server, And Plugins\n" +
+                "**4:**  Other Reasons", false);
+        embed.addField("What **__NOT__** to do",
+                "**-**  Send us a snippet of error codes, you probably don't know why we ask.\n" +
+                "**-**  Send images, people on phones cant read it\n" +
+                "**-**  Removing information You don't know more about the errors than we do", false);
+        embed.addField("How to get a log",
+                "**-**  The `latest.log`  file from your server's Log folder\n" +
+                "**-**  Go to <https://pastebin.com/> And paste that file there.\n" +
+                "**-**  Alternatively <https://mclo.gs/> and paste it there.\n" +
+                "**-**  Or just send the file", false);
 
-        Director a = Director.load(100001);
-
-        VolmitEmbed embed = new VolmitEmbed("Automated Error Detector", e.getMessage());
-        embed.setTitle("Automated Detriment Detector");
-        embed.setDescription(a.getSKey1() + "||" + properURL + "||");
-        Main.info("PROCESSING PASTEBIN FILE");
-        int prob = 0;
-
-        // Shitty loop for stuff
-        if (doc.text().contains("[Iris]: Couldn't find Object:")) { // Use element.text() to get the text of the element as a String
-            embed.addField("Objects are Broken!: ", a.getSKey2(), false);
-            prob++;
-        }
-        if (doc.text().contains("Couldn't read Biome file:")) { // Use element.text() to get the text of the element as a String
-            embed.addField("You have a typo in a Biome file: ", a.getSKey3(), false);
-            prob++;
-        }
-        if (doc.text().contains("[Iris]: Failed to generate parallax")) { // Use element.text() to get the text of the element as a String
-            embed.addField("Iris's Parallax Layer has failed: ", a.getSKey4(), false);
-            prob++;
-        }
-        if (doc.text().contains("configured to generate Overworld!")) { // Use element.text() to get the text of the element as a String
-            embed.addField("Iris is being used in the Bukkit.yml file: ", a.getSKey5(), false);
-            prob++;
-        }
-        if (doc.text().contains("Failed to insert parallax at chunk")) { // Use element.text() to get the text of the element as a String
-            embed.addField("Iris's Parallax Layer generation: ", a.getSKey6(), false);
-            prob++;
-        }
-        if (doc.text().contains("and may increase memory usage!")) { // Use element.text() to get the text of the element as a String
-            embed.addField("Large objects are in use", a.getSKey7(), false);
-            prob++;
-        }
-        if (doc.text().contains("DO NOT REPORT THIS TO PAPER - THIS IS NOT A BUG OR A CRASH")) { // Use element.text() to get the text of the element as a String
-            embed.addField("Paper Watchdog Spam", a.getSKey8(), false);
-            prob++;
-        }
-        if (!doc.text().contains("[Iris] Enabling Iris")) {
-            embed.addField("This does not contain a **full** log with Iris installed, perhaps try again if you want more information.", "", false);
-        }
-
-        // NO PROBLEMS
-        if (prob < 1) {
-            embed.addField("Well, This is not good.", "I cant seem to figure anything out; try asking the support team about the issue!", false);
-        }
-
+        //Commands
+        //embed.addField("Name Here", "" + "Value here", false);
         embed.send(e.getMessage(), true, 1000);
+
     }
 }
-
-
-
-

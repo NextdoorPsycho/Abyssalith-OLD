@@ -8,6 +8,8 @@ import lombok.Data;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 public class ReactionRoleDirector {
@@ -17,7 +19,7 @@ public class ReactionRoleDirector {
     // Add dans shitty variables here, all will be added to json perfectly // accessed
     private String rolePostId = "";
     private String roleChannelId = "";
-    private String reactionEmojiId = "";
+    private List<String> roles = new ArrayList<>();
     private long rId;
 
 

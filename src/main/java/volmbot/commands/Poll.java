@@ -54,7 +54,7 @@ public class Poll extends VolmitCommand {
                 }
             });
         } else {
-            event.getChannel().sendMessage("Wrong Usage");
+            event.getChannel().sendMessage("Wrong Usage").queue();
             //todo Wrong usage
         }
     }
