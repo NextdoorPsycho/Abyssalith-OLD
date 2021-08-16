@@ -113,7 +113,7 @@ public class VolmitCommand extends ListenerAdapter {
         if (noPermission(Objects.requireNonNull(e.getMember()).getRoles(), e.getAuthor().getId())) return;
 
         // Convert args
-        List<String> args = new LinkedList<>(Arrays.asList(e.getMessage().getContentRaw().split(" ")));
+        List<String> args = new LinkedList<>(Arrays.asList(e.getMessage().getContentRaw().replace(Toolkit.get().BotPrefix, "").split(" ")));
 
         // Check match command
         if (!checkCommand(args.get(0))) return;
@@ -185,14 +185,16 @@ public class VolmitCommand extends ListenerAdapter {
     }
 
     /* Checks if the specified command is this command */
-    private boolean checkCommand(String command) {
-        for (String cmd : getCommands()) {
-            if (command.equalsIgnoreCase(cmd)) {
+    private boolean checkCommand(String command){
+        if (command.equalsIgnoreCase(name)) return true;
+        for (String cmd : getCommands()){
+            if (command.equalsIgnoreCase(cmd)){
                 return true;
             }
         }
         return false;
     }
+
 
     /* Sends a help message for this command's usage in the specified message's channel */
     public void sendHelp(Message message) {
