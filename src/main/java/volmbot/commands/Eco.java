@@ -7,7 +7,7 @@ public class Eco extends VolmitCommand {
     // Constructor
     public Eco() {
         super(
-                "!eco",
+                "eco",
                 new String[]{},
                 new String[]{}, // Add role name here. Empty: always / 1+: at least one.
                 "Economy Category",
