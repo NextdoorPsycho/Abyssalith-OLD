@@ -24,7 +24,6 @@ public class Commands extends VolmitCommand {
                 false,
                 null
         );
-        System.out.println(Toolkit.get().BotPrefix);
         setCommands(processCMDs(jda));
     }
 
