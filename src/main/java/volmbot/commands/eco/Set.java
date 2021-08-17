@@ -18,7 +18,7 @@ public class Set extends VolmitCommand {
                 new String[]{"ADMINISTRATOR"}, // Always permitted if empty. User must have at least one if specified.
                 "Sets the users balance", // Description
                 true, // Does it use Args
-                "es 10 @Psycho" //Example - the prefix
+                "eco set 10 @Psycho" //Example - the prefix
         );
     }
 

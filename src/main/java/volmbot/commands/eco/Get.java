@@ -9,16 +9,16 @@ import volmbot.util.VolmitEmbed;
 
 import java.util.List;
 
-public class Give extends VolmitCommand {
+public class Get extends VolmitCommand {
     // Constructor
-    public Give() {
+    public Get() {
         super(
-                "give", //Name
-                new String[]{}, //Alias's
+                "Get", //Name
+                new String[]{"bal", "balance"}, //Alias's
                 new String[]{"ADMINISTRATOR"}, // Always permitted if empty. User must have at least one if specified.
-                "Gives a Number of currency to the user", // Description
-                true, // Does it use Args
-                "eco give 10 @Psycho" //Example - the prefix
+                "Get's the users balance", // Description
+                false, // Does it use Args
+                "eco get @Psycho" //Example - the prefix
         );
     }
 
@@ -27,13 +27,10 @@ public class Give extends VolmitCommand {
     public void handle(List<String> args, GuildMessageReceivedEvent e) {
         String moneyName = Toolkit.get().MoneyName;
         String moneyEmoji = Toolkit.get().MoneyEmoji;
-
-        System.out.println("Made it here...");
-        VolmitEmbed embed = new VolmitEmbed("Transaction Receipt!", e.getMessage());
-        embed.addField(moneyEmoji+ moneyName+ " given: ", args.get(1) + " From: " + e.getAuthor().getAsMention(), false);
-        Econator.Add(e.getMessage(), Integer.parseInt(args.get(1)));
         UserDirector m = UserDirector.load(e.getMessage().getMentionedMembers().get(0).getIdLong());
-        embed.addField("New Total For " + e.getMessage().getMentionedMembers().get(0).getEffectiveName() + ": ", m.getMoney(), false);
+        VolmitEmbed embed = new VolmitEmbed("Transaction Receipt!", e.getMessage());
+        embed.addField(moneyEmoji+ moneyName+ " Total: ", m.getMoney() + " Requested  By: " + e.getAuthor().getAsMention(), false);
+        embed.addField("Total For " + e.getMessage().getMentionedMembers().get(0).getEffectiveName() + ": ", m.getMoney(), false);
         embed.send(e.getMessage(), true, 1000);
     }
 }

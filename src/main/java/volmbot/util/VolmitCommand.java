@@ -100,7 +100,6 @@ public class VolmitCommand extends ListenerAdapter {
     // Override me!
     public void handle(List<String> args, GuildMessageReceivedEvent e) {
         e.getMessage().reply("The command you ran is improperly written. The handle() must be overwritten.");
-        System.out.println("Made it to a bad place");
     }
 
     // Handles prefix, handles bot users.

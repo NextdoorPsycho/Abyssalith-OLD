@@ -11,7 +11,6 @@ public class BotInstance {
     private final JDA jda;
 
     public BotInstance(String s) throws LoginException {
-        // System.out.println("Creating a bot with " + s); Prints the bot token - bad to do
         jda = JDABuilder.createDefault(s).build();
         jda.getPresence().setStatus(OnlineStatus.IDLE);
         jda.getPresence().setActivity(Activity.watching("The Universe"));

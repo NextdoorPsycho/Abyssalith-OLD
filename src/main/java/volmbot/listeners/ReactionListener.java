@@ -37,7 +37,6 @@ public class ReactionListener extends ListenerAdapter {
     public void onGuildMessageReactionRemove(GuildMessageReactionRemoveEvent e)
     {
         long uid = e.getUserIdLong();
-        System.out.println(uid +"  "+ Main.getJDA().getSelfUser().getIdLong());
         if (Main.getJDA().getSelfUser().getIdLong() != uid) {
             long ReMessage = e.getMessageIdLong();
             ReactionRoleDirector oMsg = ReactionRoleDirector.load(ReMessage);

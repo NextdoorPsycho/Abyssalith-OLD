@@ -16,7 +16,8 @@ public class Eco extends VolmitCommand {
                 new VolmitCommand[]{
                         new Give(),
                         new Set(),
-                        new Take(),
+                        new Remove(),
+                        new Get(),
                 }
         );
     }

@@ -76,27 +76,11 @@ public class Main extends ListenerAdapter {
     }
 
 
-    @Override
-    public void onMessageReceived(MessageReceivedEvent e) {
-        if (!e.getAuthor().isBot()) {
-            // Updates configurations
-            Toolkit.get();
-            Main.LOGGER.info(e.getAuthor().getName() + ": " + e.getMessage().getContentDisplay());
-            if (Shutdown.checkOverrideAdmin) {
-                if (e.getMessage().getContentRaw().contains("yes I am")) {
-                    e.getMessage().delete().queue();
-                    shutdown();
-                }
-                if (!e.getMessage().getContentDisplay().contains("shutdown") && !e.getMessage().getContentDisplay().contains("stop")) {
-                    Shutdown.checkOverrideAdmin = false;
-                }
-            }
-        }
-    }
 
     @Override
     public void onReady(@NonNull ReadyEvent e) {
         LOGGER.info("{} IS WATCHING THE UNIVERSE", e.getJDA().getSelfUser().getAsTag());
+        System.out.println("[ BOT HAS STARTED! ]");
     }
 
     public static void shutdown() {

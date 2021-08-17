@@ -9,16 +9,16 @@ import volmbot.util.VolmitEmbed;
 
 import java.util.List;
 
-public class Take extends VolmitCommand {
+public class Remove extends VolmitCommand {
     // Constructor
-    public Take() {
+    public Remove() {
         super(
                 "remove", //Name
                 new String[]{}, //Alias's
                 new String[]{"ADMINISTRATOR"}, // Always permitted if empty. User must have at least one if specified.
                 "Takes a Number of currency to the user", // Description
                 true, // Does it use Args
-                "er 10 @Psycho" //Example - the prefix
+                "eco remove 10 @Psycho" //Example - the prefix
         );
     }
 
