@@ -1,5 +1,6 @@
 package volmbot.commands;
 
+import net.dv8tion.jda.api.entities.Role;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import volmbot.toolbox.ReactionRoleDirector;
 import volmbot.util.VolmitCommand;
@@ -7,12 +8,11 @@ import volmbot.util.VolmitEmbed;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
 
-public class RoleManager extends VolmitCommand {
+public class ReactionRole extends VolmitCommand {
     // Constructor
-    public RoleManager() {
+    public ReactionRole() {
         super(
                 "reactionrole",
                 new String[]{"reactionrole", "rr"},
@@ -42,15 +42,18 @@ public class RoleManager extends VolmitCommand {
         System.out.println(role);
 
         //Write the file for the role
+
+        int unie = 0;
         for (String temp : args) {
+            String rrr = e.getGuild().getRoleById(args.get(unie)).getName();
             r.add(temp);
+            Role rr = e.getChannel().getGuild().getRoleById(temp);
+
+            assert rr != null;
+            embed.addField("The `" + rrr + "` role:", emoji[unie] + " for " + rr.getAsMention(), true);
+            unie++;
         }
 
-
-
-
-
-        //Embed
 
         embed.setTitle("Reaction Role Page!");
         embed.setDescription("Please react to a role:\n");
@@ -64,10 +67,7 @@ public class RoleManager extends VolmitCommand {
             dir.setRoles(r);
             dir.save();
             embed.addField("The `" + roleName + "` role:", dir.getRoles() + " for " + role, true);
-
-
 //            message.addReaction(reaction2).queue();
-//            message.addReaction(reaction3).queue();
         });
 
 
