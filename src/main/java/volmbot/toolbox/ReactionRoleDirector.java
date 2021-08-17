@@ -51,16 +51,18 @@ public class ReactionRoleDirector {
                 ReactionRoleDirector u = new ReactionRoleDirector(id);
 
                 if (!f.exists()) {
-                    try {
+                    /*try {
                         IO.writeAll(f, new Gson().toJson(u));
                     } catch (IOException e) {
                         e.printStackTrace();
+                    }*/
+
+                } else {
+                    try {
+                        return new Gson().fromJson(IO.readAll(f), ReactionRoleDirector.class);
+                    } catch (IOException e) {
+                        System.out.println(e);
                     }
-                }
-                try {
-                    return new Gson().fromJson(IO.readAll(f), ReactionRoleDirector.class);
-                } catch (IOException e) {
-                    e.printStackTrace();
                 }
                 return u;
 
@@ -70,6 +72,7 @@ public class ReactionRoleDirector {
 
 
     }
+
 
     static {
         //:(:[
