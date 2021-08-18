@@ -32,6 +32,8 @@ public class ReactionListener extends ListenerAdapter {
                             Main.info("had a strokE");
                         }
                         ff++;
+                    } else {
+                        ff++;
                     }
                 }
             }
